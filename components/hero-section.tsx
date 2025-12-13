@@ -122,7 +122,7 @@ export default function HeroSection() {
                 }
           }
         >
-          <div className='inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 mb-8 backdrop-blur-sm'>
+          <div className='inline-flex items-center gap-2 px-6 py-2 rounded-full border border-white/10 bg-white/5 mb-8 backdrop-blur-sm'>
             <Sparkles className='w-4 h-4 text-[#701dff]' />
             <span className='text-sm font-medium text-white/80'>
               The Ultimate Life RPG
@@ -146,7 +146,7 @@ export default function HeroSection() {
         >
           <div className='sm:sticky sm:top-56 flex items-center justify-center'>
             {/* Phone */}
-            <div className='relative w-64 sm:w-80 aspect-1/2 rounded-[3rem] overflow-hidden z-50 '>
+            <div className='relative mt-16 w-64 sm:w-80 aspect-1/2 rounded-[3rem] overflow-hidden z-50 '>
               <img
                 src='/hero-mockup.png'
                 alt='App interface preview'
@@ -158,8 +158,8 @@ export default function HeroSection() {
             {!isMobile &&
               featureCards.map((card) => {
                 const verticalOffset =
-                  featureCards.indexOf(card) * 160 -
-                  (featureCards.length - 1) * 80;
+                  featureCards.indexOf(card) * 180 -
+                  (featureCards.length - 1) * 75;
                 const cardProgress = clamp(
                   (scrollProgress - card.startScroll) /
                     (card.endScroll - card.startScroll),
@@ -205,12 +205,13 @@ export default function HeroSection() {
         </div>
 
         {/* CTA Section - Reduced spacing (padding top) */}
-        <div className='max-w-2xl mx-auto text-center pb-24 pt-0 relative z-20 mt-6 sm:mt-10'>
+        <div className='max-w-2xl mx-auto text-center pb-24 pt-0 relative z-20 mt-6 sm:mt-16'>
           <h2 className='text-4xl sm:text-5xl font-display font-bold mb-6 text-white'>
             See Your Transformation Unfold
           </h2>
           <p className='text-white/60 text-lg mb-12 font-sans max-w-xl mx-auto'>
             Track every milestone, celebrate every win, and become the best
+            <br />
             version of yourself through gamified habits.
           </p>
 

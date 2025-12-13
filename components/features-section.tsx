@@ -65,6 +65,7 @@ export default function FeaturesSection() {
           </h2>
           <p className='text-lg text-white/60 max-w-2xl mx-auto leading-relaxed'>
             Designed to make habit tracking engaging, rewarding, and sustainable
+            <br />
             through proven game mechanics.
           </p>
         </div>

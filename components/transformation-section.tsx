@@ -43,7 +43,7 @@ export default function TransformationSection() {
       className='relative py-8 px-4 sm:px-6 lg:px-8 bg-[#050406]'
     >
       <div className='max-w-6xl mx-auto'>
-        <div className='mb-24 text-center'>
+        <div className='mb-16 text-center'>
           <div className='inline-block mb-4 px-4 py-1.5 rounded-full border border-white/10 bg-white/5'>
             <span className='text-sm font-medium text-white/80'>
               Our Process
@@ -55,7 +55,8 @@ export default function TransformationSection() {
           </h2>
           <p className='text-lg text-white/60 max-w-2xl mx-auto leading-relaxed'>
             Your journey from ordinary to unstoppable follows a proven
-            progression system designed for long-term growth.
+            progression <br />
+            system designed for long-term growth.
           </p>
         </div>
 
