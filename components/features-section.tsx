@@ -52,7 +52,7 @@ export default function FeaturesSection() {
   return (
     <section
       id='features'
-      className='relative py-20 px-4 sm:px-6 lg:px-8 bg-[#050406]'
+      className='relative py-16 sm:py-12 lg:py-32 px-4 sm:px-6 lg:px-8 bg-[#050406]'
     >
       <div className='max-w-6xl mx-auto'>
         <div className='mb-16 text-center'>
@@ -63,10 +63,8 @@ export default function FeaturesSection() {
             The Key Benefits of <br />
             <span className='text-[#701dff]'>Gamifying Your Growth</span>
           </h2>
-          <p className='text-lg text-white/60 max-w-2xl mx-auto leading-relaxed'>
-            Designed to make habit tracking engaging, rewarding, and sustainable
-            <br />
-            through proven game mechanics.
+          <p className='text-lg text-white/60 max-w-2xl mx-auto leading-relaxed lg:max-w-lg'>
+            Designed to make habit tracking engaging, rewarding, and sustainable through proven game mechanics.
           </p>
         </div>
 
@@ -76,17 +74,21 @@ export default function FeaturesSection() {
             return (
               <div
                 key={index}
-                className={`group p-8 rounded-2xl border border-[#2c2334] bg-[#2c2334]/25 hover:border-[#701dff]/50 hover:bg-[#2c2334]/40 transition-all duration-300 relative overflow-hidden ${
-                  mounted ? "animate-fade-up" : ""
-                }`}
+                className={`group p-8 rounded-2xl border border-[#2c2334] bg-[#2c2334]/25 hover:border-[#701dff]/50 hover:bg-[#2c2334]/40 transition-all duration-300 relative overflow-hidden ${mounted ? "animate-fade-up" : ""
+                  }`}
                 style={{ animationDelay: `${index * 0.05}s` }}
               >
                 {/* Hover Gradient Effect */}
-                <div className='absolute inset-0 bg-linear-to-b from-[#701dff]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none' />
+                <div className='absolute inset-0 bg-gradient-to-b from-[#701dff]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none' />
 
                 <div className='relative z-10'>
-                  <div className='mb-6'>
+                  <div className='mb-6 flex items-center gap-3'>
                     <Icon className='w-8 h-8 text-[#701dff]' />
+                    {feature.icon === Users && (
+                      <span className='px-2.5 py-1 text-xs font-semibold rounded-full bg-[#701dff]/10 text-[#701dff] border border-[#701dff]/30'>
+                        Coming Soon
+                      </span>
+                    )}
                   </div>
                   <h3 className='text-xl font-display font-bold mb-3 text-white'>
                     {feature.title}

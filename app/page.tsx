@@ -5,8 +5,22 @@ import TransformationSection from "@/components/transformation-section";
 import FeaturesSection from "@/components/features-section";
 import Footer from "@/components/footer";
 import Image from "next/image";
+import { useState } from "react";
+
 
 export default function Home() {
+  const [email, setEmail] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email) {
+      setSubmitted(true);
+      setEmail("");
+      setTimeout(() => setSubmitted(false), 3000);
+    }
+  };
+
   return (
     <main className='min-h-screen bg-[#050406] text-white overflow-hidden'>
       {/* Navigation */}
@@ -47,10 +61,17 @@ export default function Home() {
           </div>
           <Button
             size='sm'
-            className='bg-[#701dff] hover:bg-[#701dff]/90 text-white font-medium rounded-full px-6 shadow-[0_0_20px_-5px_#701dff]'
-            onClick={() => document.getElementById("email-input")?.focus()}
+            className='bg-[#701dff] hover:bg-[#701dff]/90 text-white font-medium rounded-full px-6 shadow-[0_0_20px_-5px_#701dff] lg:py-5'
+            onClick={() => { }}
           >
-            Join Waitlist
+            <a
+              href='https://testflight.apple.com/join/r1beJJ1Y' // <-- The TestFlight link you provided
+              target='_blank' // Opens link in a new tab
+              rel='noopener noreferrer' // Security best practice for target='_blank'
+            // All Tailwind classes from the original Button component are moved here:
+            >
+              {submitted ? "Confirmed!" : "Join iOS Beta"}
+            </a>
           </Button>
         </div>
       </nav>

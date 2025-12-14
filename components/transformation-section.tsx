@@ -10,7 +10,7 @@ const transformationSteps = [
     description:
       "Create your character and define your path. Set daily quests that matter to you—these aren't arbitrary tasks.",
     stats: "Day 1-30",
-    image: "/character-creation-screen-rpg-style-purple-theme.jpg",
+    image: "/potential.png",
   },
   {
     phase: "PHASE 2",
@@ -18,7 +18,7 @@ const transformationSteps = [
     description:
       "Every completed habit is XP gained. Watch your character level up. The streaks you build become your foundation.",
     stats: "Day 31-90",
-    image: "/progress-dashboard-with-level-up-animations.jpg",
+    image: "/level_up.png",
   },
   {
     phase: "PHASE 3",
@@ -26,7 +26,7 @@ const transformationSteps = [
     description:
       "You're not just tracking habits anymore. You're witnessing your metamorphosis. Your analytics show the person you've become.",
     stats: "Day 90+",
-    image: "/achievement-unlocked-gaming-interface.jpg",
+    image: "/ascension.png",
   },
 ];
 
@@ -40,7 +40,7 @@ export default function TransformationSection() {
   return (
     <section
       id='transform'
-      className='relative py-8 px-4 sm:px-6 lg:px-8 bg-[#050406]'
+      className='relative py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-[#050406]'
     >
       <div className='max-w-6xl mx-auto'>
         <div className='mb-16 text-center'>
@@ -53,10 +53,9 @@ export default function TransformationSection() {
             Simple, Smart, and <br />
             <span className='text-[#701dff]'>Scalable Progression</span>
           </h2>
-          <p className='text-lg text-white/60 max-w-2xl mx-auto leading-relaxed'>
+          <p className='text-lg text-white/60 max-w-2xl mx-auto leading-relaxed lg:max-w-xl'>
             Your journey from ordinary to unstoppable follows a proven
-            progression <br />
-            system designed for long-term growth.
+            progression system designed for long-term growth.
           </p>
         </div>
 

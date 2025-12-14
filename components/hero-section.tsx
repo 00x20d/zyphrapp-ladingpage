@@ -62,6 +62,7 @@ export default function HeroSection() {
   const [submitted, setSubmitted] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [isLandscape, setIsLandscape] = useState(false);
 
   const headlineRef = useRef<HTMLDivElement>(null);
   //const phoneContainerRef = useRef<HTMLDivElement>(null);
@@ -79,7 +80,13 @@ export default function HeroSection() {
   }, []);
 
   useEffect(() => {
-    const updateScreen = () => setIsMobile(window.innerWidth < 640);
+    const updateScreen = () => {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      setIsMobile(width < 640);
+      // Landscape mode: width > height and width < 1024 (tablet breakpoint)
+      setIsLandscape(width > height && width < 1024);
+    };
     updateScreen();
     window.addEventListener("resize", updateScreen);
     return () => window.removeEventListener("resize", updateScreen);
@@ -102,7 +109,7 @@ export default function HeroSection() {
   return (
     <section
       id='hero'
-      className='relative bg-[#050406] overflow-hidden min-h-screen'
+      className='relative bg-[#050406] overflow-hidden min-h-screen sm:py-16 lg:py-24'
     >
       {/* Background Gradient Blob */}
       <div className='absolute top-0 left-1/2 -translate-x-1/2 w-[300px] h-[300px] sm:w-[800px] sm:h-[500px] bg-[#701dff]/20 blur-[120px] rounded-full pointer-events-none z-0' />
@@ -110,16 +117,16 @@ export default function HeroSection() {
       <div className='max-w-5xl mx-auto px-4 sm:px-6 lg:px-6 relative z-10'>
         <div
           ref={headlineRef}
-          className='pt-40 sm:pt-24 pb-8 sm:pb-12 text-center relative sm:fixed sm:top-0 sm:left-0 sm:right-0 sm:w-full sm:z-0 pointer-events-none'
+          className='pt-36 pb-8 sm:pb-12 text-center relative sm:fixed sm:top-0 sm:left-0 sm:right-0 sm:w-full sm:z-0 pointer-events-none'
           style={
-            isMobile
+            isMobile && !isLandscape
               ? undefined
               : {
-                  opacity: headlineOpacity,
-                  transform: `translateY(${headlineY}px) scale(${headlineScale})`,
-                  transition: "none",
-                  transformOrigin: "top center",
-                }
+                opacity: headlineOpacity,
+                transform: `translateY(${headlineY}px) scale(${headlineScale})`,
+                transition: "none",
+                transformOrigin: "top center",
+              }
           }
         >
           <div className='inline-flex items-center gap-2 px-6 py-2 rounded-full border border-white/10 bg-white/5 mb-8 backdrop-blur-sm'>
@@ -141,10 +148,10 @@ export default function HeroSection() {
 
         {/* Phone section with cards */}
         <div
-          className='relative mt-10 sm:mt-[46vh]'
-          style={{ height: isMobile ? "auto" : "750px" }}
+          className='relative mt-0 sm:mt-[42vh]'
+          style={{ height: isMobile && !isLandscape ? "auto" : "750px" }}
         >
-          <div className='sm:sticky sm:top-56 flex items-center justify-center'>
+          <div className='sm:sticky sm:top-48 flex items-center justify-center'>
             {/* Phone */}
             <div className='relative mt-16 w-64 sm:w-80 aspect-1/2 rounded-[3rem] overflow-hidden z-50 '>
               <img
@@ -155,14 +162,14 @@ export default function HeroSection() {
             </div>
 
             {/* Cards */}
-            {!isMobile &&
+            {(!isMobile || isLandscape) &&
               featureCards.map((card) => {
                 const verticalOffset =
-                  featureCards.indexOf(card) * 180 -
-                  (featureCards.length - 1) * 75;
+                  featureCards.indexOf(card) * 160 -
+                  (featureCards.length - 1) * 65;
                 const cardProgress = clamp(
                   (scrollProgress - card.startScroll) /
-                    (card.endScroll - card.startScroll),
+                  (card.endScroll - card.startScroll),
                   0,
                   1
                 );
@@ -204,20 +211,19 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* CTA Section - Reduced spacing (padding top) */}
-        <div className='max-w-2xl mx-auto text-center pb-24 pt-0 relative z-20 mt-6 sm:mt-16'>
+        {/* CTA Section */}
+        <div className='max-w-2xl mx-auto text-center sm:pb-20 lg:pb-8 pt-0 relative z-20 mt-16'>
           <h2 className='text-4xl sm:text-5xl font-display font-bold mb-6 text-white'>
             See Your Transformation Unfold
           </h2>
-          <p className='text-white/60 text-lg mb-12 font-sans max-w-xl mx-auto'>
+          <p className='text-white/60 text-lg mb-12 font-sans max-w-xl mx-auto lg:max-w-lg'>
             Track every milestone, celebrate every win, and become the best
-            <br />
             version of yourself through gamified habits.
           </p>
 
           <form
             onSubmit={handleSubmit}
-            className='flex flex-row gap-6 w-9/12 mx-auto justify-center'
+            className='flex flex-row gap-6 lg:w-9/12 mx-auto justify-center sm:w-full'
           >
             {/* The email input block (commented out in your original code) remains commented out */}
 
