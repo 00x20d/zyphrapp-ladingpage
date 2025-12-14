@@ -23,6 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en' className='dark'>
+      <link rel="icon" href="/zyphr_logo.ico" />
       <body
         className={`font-sans antialiased bg-[#050406] text-white selection:bg-[#701dff] selection:text-white`}
       >
