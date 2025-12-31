@@ -122,11 +122,11 @@ export default function HeroSection() {
             isMobile && !isLandscape
               ? undefined
               : {
-                opacity: headlineOpacity,
-                transform: `translateY(${headlineY}px) scale(${headlineScale})`,
-                transition: "none",
-                transformOrigin: "top center",
-              }
+                  opacity: headlineOpacity,
+                  transform: `translateY(${headlineY}px) scale(${headlineScale})`,
+                  transition: "none",
+                  transformOrigin: "top center",
+                }
           }
         >
           <div className='inline-flex items-center gap-2 px-6 py-2 rounded-full border border-white/10 bg-white/5 mb-8 backdrop-blur-sm'>
@@ -138,7 +138,7 @@ export default function HeroSection() {
 
           <h1 className='text-4xl sm:text-7xl font-display font-bold mb-8 leading-tight text-balance tracking-tight'>
             <span className='block text-white'>Turn Your Life</span>
-            <span className='block text-white/40'>Into an RPG.</span>
+            <span className='block text-white/40'>Into a RPG</span>
           </h1>
           <p className='text-base sm:text-lg text-white/60 max-w-2xl mx-auto font-sans leading-relaxed'>
             Create your character, complete daily quests, <br /> and watch
@@ -169,7 +169,7 @@ export default function HeroSection() {
                   (featureCards.length - 1) * 65;
                 const cardProgress = clamp(
                   (scrollProgress - card.startScroll) /
-                  (card.endScroll - card.startScroll),
+                    (card.endScroll - card.startScroll),
                   0,
                   1
                 );
