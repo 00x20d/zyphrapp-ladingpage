@@ -7,7 +7,6 @@ import Footer from "@/components/footer";
 import Image from "next/image";
 import { useState } from "react";
 
-
 export default function Home() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -62,13 +61,13 @@ export default function Home() {
           <Button
             size='sm'
             className='bg-[#701dff] hover:bg-[#701dff]/90 text-white font-medium rounded-full px-6 shadow-[0_0_20px_-5px_#701dff] lg:py-5'
-            onClick={() => { }}
+            onClick={() => {}}
           >
             <a
-              href='https://testflight.apple.com/join/r1beJJ1Y' // <-- The TestFlight link you provided
+              href='https://app.youform.com/forms/do22x9gt' // <-- The TestFlight link you provided
               target='_blank' // Opens link in a new tab
               rel='noopener noreferrer' // Security best practice for target='_blank'
-            // All Tailwind classes from the original Button component are moved here:
+              // All Tailwind classes from the original Button component are moved here:
             >
               {submitted ? "Confirmed!" : "Join iOS Beta"}
             </a>
