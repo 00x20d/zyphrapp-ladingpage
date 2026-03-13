@@ -1,6 +1,9 @@
 "use server";
 
+import { Resend } from "resend";
 import { contactFormSchema, ContactFormValues } from "@/lib/contact-schema";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function submitContactForm(data: ContactFormValues) {
   // Validate the data using Zod
@@ -31,16 +34,35 @@ export async function submitContactForm(data: ContactFormValues) {
   const sanitizedContent = sanitize(content);
 
   try {
-    // In a real application, you would send an email here using a service like Resend, SendGrid, etc.
-    // For now, we'll simulate a successful submission.
-    console.log("Contact Form Submission:", {
-      sanitizedTitle,
-      sanitizedEmail,
-      sanitizedContent,
+    // Send email using Resend
+    const { data: resendData, error } = await resend.emails.send({
+      from:
+        process.env.CONTACT_FROM_EMAIL || "Zyphr Contact <contact@zyphr.app>",
+      to: process.env.CONTACT_TO_EMAIL || "zyphrapp@proton.me",
+      replyTo: sanitizedEmail,
+      subject: `[Zyphr Contact] ${sanitizedTitle}`,
+      html: `
+        <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
+          <h2 style="color: #701dff;">New Message from Zyphr Landing Page</h2>
+          <p><strong>From:</strong> ${sanitizedEmail}</p>
+          <p><strong>Subject:</strong> ${sanitizedTitle}</p>
+          <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+          <div style="white-space: pre-wrap; line-height: 1.6;">
+            ${sanitizedContent}
+          </div>
+        </div>
+      `,
     });
 
-    // Simulate network delay
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    if (error) {
+      console.error("Resend API error:", error);
+      return {
+        success: false,
+        message: "Failed to send email. Please try again later.",
+      };
+    }
+
+    console.log("Email sent successfully:", resendData);
 
     return {
       success: true,
