@@ -24,10 +24,10 @@ export const TermsOfService = () => {
         <p>
           You can contact us by phone at **+491712232218** , email at{" "}
           <a
-            href='mailto:support@zyphr.app'
+            href='mailto:zyphrapp@proton.me'
             className='text-blue-600 hover:text-blue-800 font-medium'
           >
-            support@zyphr.app
+            zyphrapp@proton.me
           </a>{" "}
           , or by mail to Steinweg 19, Braunschweig, Lower Saxony 38100,
           Germany.
@@ -53,10 +53,10 @@ export const TermsOfService = () => {
           Services you are using. The modified Legal Terms will become effective
           upon posting or notifying you by{" "}
           <a
-            href='mailto:support@zyphr.app'
+            href='mailto:zyphrapp@proton.me'
             className='text-blue-600 hover:text-blue-800 font-medium'
           >
-            support@zyphr.app
+            zyphrapp@proton.me
           </a>
           , as stated in the email message. By continuing to use the Services
           after the effective date of any changes, you agree to be bound by the
@@ -157,10 +157,10 @@ export const TermsOfService = () => {
           If you wish to make any use of the Services, Content, or Marks other
           than as set out in this section, please address your request to:{" "}
           <a
-            href='mailto:support@zyphr.app'
+            href='mailto:zyphrapp@proton.me'
             className='text-blue-600 hover:text-blue-800 font-medium'
           >
-            support@zyphr.app
+            zyphrapp@proton.me
           </a>
           . If we ever grant you permission to post, reproduce, or publicly
           display any part of our Services or Content, you must identify us as
@@ -1275,10 +1275,10 @@ export const TermsOfService = () => {
           <p>
             Email:{" "}
             <a
-              href='mailto:support@zyphr.app'
+              href='mailto:zyphrapp@proton.me'
               className='text-blue-600 hover:text-blue-800 font-medium'
             >
-              support@zyphr.app
+              zyphrapp@proton.me
             </a>{" "}
           </p>
         </address>

@@ -5,6 +5,7 @@ import {
   Sankofa_Display as SF_Pro_Display,
 } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
 
 const bricolageGrotesque = Bricolage_Grotesque({ subsets: ["latin"] });
@@ -28,6 +29,7 @@ export default function RootLayout({
         className={`font-sans antialiased bg-[#050406] text-white selection:bg-[#701dff] selection:text-white`}
       >
         {children}
+        <Toaster position="top-center" />
         <Analytics />
       </body>
     </html>

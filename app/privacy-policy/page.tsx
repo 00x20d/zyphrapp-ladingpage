@@ -41,10 +41,10 @@ export const PrivacyPolicy = () => {
         <p>
           If you still have any questions or concerns, please contact us at{" "}
           <a
-            href='mailto:support@zyphr.app'
+            href='mailto:zyphrapp@proton.me'
             className='text-blue-600 hover:text-blue-800 font-medium'
           >
-            support@zyphr.app
+            zyphrapp@proton.me
           </a>
           .
         </p>
@@ -503,10 +503,10 @@ export const PrivacyPolicy = () => {
           If you become aware of any data we may have collected from children
           under age 18, please contact us at{" "}
           <a
-            href='mailto:support@zyphr.app'
+            href='mailto:zyphrapp@proton.me'
             className='text-blue-600 hover:text-blue-800 font-medium'
           >
-            support@zyphr.app
+            zyphrapp@proton.me
           </a>
           .
         </p>
@@ -720,10 +720,10 @@ export const PrivacyPolicy = () => {
           To exercise your right to know or your right to delete, please email
           us at{" "}
           <a
-            href='mailto:support@zyphr.app'
+            href='mailto:zyphrapp@proton.me'
             className='text-blue-600 hover:text-blue-800 font-medium'
           >
-            support@zyphr.app
+            zyphrapp@proton.me
           </a>{" "}
           or submit a data subject access request.
         </p>
@@ -768,10 +768,10 @@ export const PrivacyPolicy = () => {
           If you have questions or comments about this notice, you may email us
           at{" "}
           <a
-            href='mailto:support@zyphr.app'
+            href='mailto:zyphrapp@proton.me'
             className='text-blue-600 hover:text-blue-800 font-medium'
           >
-            support@zyphr.app
+            zyphrapp@proton.me
           </a>{" "}
           or contact us by post at:
         </p>

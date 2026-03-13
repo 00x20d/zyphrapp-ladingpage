@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -112,12 +113,12 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a
-                  href='mailto:support@zyphr.app'
+                <Link
+                  href='/contact'
                   className='hover:text-[#701dff] transition-colors duration-200'
                 >
                   Contact
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
