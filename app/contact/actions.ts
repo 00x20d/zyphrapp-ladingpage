@@ -3,32 +3,37 @@
 import { Resend } from "resend";
 import { contactFormSchema, ContactFormValues } from "@/lib/contact-schema";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Helper to get Resend instance safely
+const getResend = () => {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) return null;
+  return new Resend(apiKey);
+};
 
 export async function submitContactForm(data: ContactFormValues) {
-  // Check if Resend API Key is set (Server-side check)
-  if (!process.env.RESEND_API_KEY) {
-    console.error("Missing RESEND_API_KEY environment variable.");
+  // 1. Check for API Key
+  const resend = getResend();
+  if (!resend) {
+    console.error("DEBUG: RESEND_API_KEY is missing from process.env");
     return {
       success: false,
-      message: "Server configuration error. Please contact the administrator.",
+      message: "Server configuration error: Missing API Key.",
     };
   }
 
-  // Validate the data using Zod
+  // 2. Validate the data
   const validatedFields = contactFormSchema.safeParse(data);
-
   if (!validatedFields.success) {
     return {
       success: false,
-      message: "Invalid form data. Please check your inputs.",
+      message: "Invalid form data.",
       errors: validatedFields.error.flatten().fieldErrors,
     };
   }
 
   const { title, email, content } = validatedFields.data;
 
-  // Sanitize input (basic escaping to prevent basic HTML injection)
+  // 3. Sanitize
   const sanitize = (str: string) => {
     return str
       .replace(/&/g, "&amp;")
@@ -43,11 +48,16 @@ export async function submitContactForm(data: ContactFormValues) {
   const sanitizedContent = sanitize(content);
 
   try {
-    // Send email using Resend
+    // 4. Send email
+    const fromEmail =
+      process.env.CONTACT_FROM_EMAIL || "Zyphr Contact <contact@zyphr.app>";
+    const toEmail = process.env.CONTACT_TO_EMAIL || "zyphrapp@proton.me";
+
+    console.log(`DEBUG: Attempting to send from ${fromEmail} to ${toEmail}`);
+
     const { data: resendData, error } = await resend.emails.send({
-      from:
-        process.env.CONTACT_FROM_EMAIL || "Zyphr Contact <contact@zyphr.app>",
-      to: process.env.CONTACT_TO_EMAIL || "zyphrapp@proton.me",
+      from: fromEmail,
+      to: toEmail,
       replyTo: sanitizedEmail,
       subject: `[Zyphr Contact] ${sanitizedTitle}`,
       html: `
@@ -64,24 +74,22 @@ export async function submitContactForm(data: ContactFormValues) {
     });
 
     if (error) {
-      console.error("Resend API error:", error);
+      console.error("DEBUG: Resend API error details:", JSON.stringify(error));
       return {
         success: false,
-        message: "Failed to send email. Please try again later.",
+        message: `Email provider error: ${error.message}`,
       };
     }
-
-    console.log("Email sent successfully:", resendData);
 
     return {
       success: true,
       message: "Your message has been sent successfully!",
     };
-  } catch (error) {
-    console.error("Failed to submit contact form:", error);
+  } catch (error: any) {
+    console.error("DEBUG: Fatal error in submitContactForm:", error);
     return {
       success: false,
-      message: "Something went wrong. Please try again later.",
+      message: `Fatal error: ${error?.message || "Unknown error"}`,
     };
   }
 }
