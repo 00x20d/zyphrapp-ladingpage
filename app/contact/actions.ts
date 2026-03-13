@@ -6,6 +6,15 @@ import { contactFormSchema, ContactFormValues } from "@/lib/contact-schema";
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function submitContactForm(data: ContactFormValues) {
+  // Check if Resend API Key is set (Server-side check)
+  if (!process.env.RESEND_API_KEY) {
+    console.error("Missing RESEND_API_KEY environment variable.");
+    return {
+      success: false,
+      message: "Server configuration error. Please contact the administrator.",
+    };
+  }
+
   // Validate the data using Zod
   const validatedFields = contactFormSchema.safeParse(data);
 
