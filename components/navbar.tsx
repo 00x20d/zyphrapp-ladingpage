@@ -67,7 +67,7 @@ export default function Navbar() {
           className='bg-[#701dff] hover:bg-[#701dff]/90 text-white font-medium rounded-full px-6 shadow-[0_0_20px_-5px_#701dff] lg:py-5'
         >
           <a
-            href='https://app.youform.com/forms/do22x9gt'
+            href='https://apps.apple.com/us/app/zyphr-gamified-habit-tracker/id6755916938'
             target='_blank'
             rel='noopener noreferrer'
           >

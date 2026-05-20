@@ -240,7 +240,7 @@ export default function HeroSection() {
 
             {/* --- 🛠️ REPLACEMENT: TestFlight Link (iOS) --- */}
             <a
-              href='https://app.youform.com/forms/do22x9gt' // <-- The TestFlight link you provided
+              href='https://apps.apple.com/us/app/zyphr-gamified-habit-tracker/id6755916938' // <-- The TestFlight link you provided
               target='_blank' // Opens link in a new tab
               rel='noopener noreferrer' // Security best practice for target='_blank'
               // All Tailwind classes from the original Button component are moved here:
