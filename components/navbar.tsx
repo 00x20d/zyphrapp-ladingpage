@@ -71,7 +71,7 @@ export default function Navbar() {
             target='_blank'
             rel='noopener noreferrer'
           >
-            Join iOS Beta
+            Download on the Appstore
           </a>
         </Button>
       </div>

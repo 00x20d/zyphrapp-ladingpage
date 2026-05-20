@@ -171,7 +171,7 @@ export default function HeroSection() {
                   (scrollProgress - card.startScroll) /
                     (card.endScroll - card.startScroll),
                   0,
-                  1
+                  1,
                 );
                 const easedProgress =
                   cardProgress * cardProgress * (3 - 2 * cardProgress);
@@ -246,7 +246,7 @@ export default function HeroSection() {
               // All Tailwind classes from the original Button component are moved here:
               className='bg-[#701dff] hover:bg-[#6015e0] text-white font-semibold h-14 rounded-xl transition-all duration-200 w-full text-lg shadow-[0_0_20px_-5px_#701dff] flex items-center justify-center'
             >
-              {submitted ? "Confirmed!" : "Join iOS Beta"}
+              {submitted ? "Confirmed!" : "Download on the Appstore"}
             </a>
 
             {/* Note: The <link> tag inside the previous button was incorrect and has been removed. 
